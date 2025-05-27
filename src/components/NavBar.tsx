@@ -1,16 +1,18 @@
 import { Leaf, Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+
   return (
     <header className="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-green-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-20 justify-between">
           {/* LOGO */}
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <Leaf className="h-10 w-10 text-green-600 hover:text-green-700 transition-colors" />
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-green-700 to-emerald-600 bg-clip-text text-transparent">
@@ -20,7 +22,7 @@ export default function NavBar() {
                 Grow Your World
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* SEARCH BAR DESKTOP */}
           <div className="hidden md:flex flex-1 max-w-lg mx-8">
@@ -52,18 +54,30 @@ export default function NavBar() {
 
           {/* HOME PAGE NAVIGATION DESKTOP */}
           <nav className="hidden lg:flex space-x-8 items-center">
-            <div className="text-gray-700 hover:text-green-600 transition-colors font-medium">
+            <Link
+              to="/"
+              className="text-gray-700 hover:text-green-600 transition-colors font-medium"
+            >
               Home
-            </div>
-            <div className="text-gray-700 hover:text-green-600 transition-colors font-medium">
+            </Link>
+            <Link
+              to="/plants"
+              className="text-gray-700 hover:text-green-600 transition-colors font-medium"
+            >
               Plants
-            </div>
-            <div className="text-gray-700 hover:text-green-600 transition-colors font-medium">
+            </Link>
+            <Link
+              to="/care"
+              className="text-gray-700 hover:text-green-600 transition-colors font-medium"
+            >
               Care Guide
-            </div>
-            <div className="text-gray-700 hover:text-green-600 transition-colors font-medium">
+            </Link>
+            <Link
+              to="/about"
+              className="text-gray-700 hover:text-green-600 transition-colors font-medium"
+            >
               About
-            </div>
+            </Link>
           </nav>
 
           {/* RIGHT SIDE ICONS */}
@@ -109,18 +123,30 @@ export default function NavBar() {
         {isMobileMenuOpen && (
           <div className="lg:hidden py-4 border-t border-green-100 bg-white/95 backdrop-blur-sm">
             <nav className="flex flex-col space-y-4">
-              <div className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2">
+              <Link
+                to="/"
+                className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2"
+              >
                 Home
-              </div>
-              <div className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2">
+              </Link>
+              <Link
+                to="/plants"
+                className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2"
+              >
                 Plants
-              </div>
-              <div className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2">
+              </Link>
+              <Link
+                to="/care"
+                className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2"
+              >
                 Care Guide
-              </div>
-              <div className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2">
+              </Link>
+              <Link
+                to="/about"
+                className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2"
+              >
                 About
-              </div>
+              </Link>
             </nav>
           </div>
         )}
